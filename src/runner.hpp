@@ -19,7 +19,6 @@ class Runner {
     bool DoWork() {
         std::string line;
         int counter = 0, depth = 0;
-        bool ignoreEof = false;
         while (std::getline(std::cin, line)) {
             ++counter;
 
@@ -31,7 +30,6 @@ class Runner {
                 }
                 ++depth;
             } else if (line.compare("}") == 0) {
-                ignoreEof = true;
                 counter = 0;
 
                 --depth;
@@ -48,7 +46,7 @@ class Runner {
             }
         }
 
-        if (!ignoreEof) {
+        if (depth == 0) {
             OnBulkFlush(queue_).Execute();
         }
         return true;
