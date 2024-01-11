@@ -1,11 +1,6 @@
-# cmake-multiplatform-template
-Tiny CMake template repository used for various C/CPP projects
+# bulk cmd task
 
-> Based on the [course example](https://github.com/CityAplons/webinar-cicd/tree/main) and [some more advanced project](https://github.com/vdamewood/silikego)
 
-### Motivation
-
-The ability to create copy-pasted projects for the Advanced-CPP course and personal pet-repos.
 
 ### Building
 
@@ -16,3 +11,14 @@ cmake --build .
 ```
 
 You may add a `-DMAKE_PACKAGE=<OFF|ON>` to disable or enable packages of a project (it's enabled by default).
+
+### Task
+
+Разработать программу для пакетной обработки команд.
+Команды считываются построчно из стандартного ввода и обрабатываются блоками по N команд. Одна команда - одна строка, конкретное значение роли не играет. Если данные закончились - блок завершается принудительно. Параметр N передается как единственный параметр командной строки в виде целого числа.
+
+Размер блока можно изменить динамически, если перед началом блока и сразу после дать команды `{` и `}` соответственно. Предыдущий пакет при этом принудительно завершается. Такие блоки могут быть включены друг в друга при этом вложенные команды `{` и `}` игнорируются (но не сами блоки). Если данные закончились внутри динамического блока, весь динамический блок игнорируется.
+
+Вместе с выводом в консоль блоки должны сохранятся в отдельные файлы с именами bulk1517223860.log , где 1517223860 - это время получения первой команды из блока. По одному файлу на блок.
+
+Бинарный файл должен называться bulk.
